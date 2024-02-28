@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adivinhe a Cor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #color-box {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        border: 2px solid black;
+      }
+      #color-name {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      #guess-input {
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 20px;
+      }
+      #guess-button {
+        font-size: 16px;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      #result {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Adivinhe a Cor</h1>
+    <div id="color-box"></div>
+    <p id="color-name">Cor: <span id="color"></span></p>
+    <input type="text" id="guess-input" placeholder="Digite a cor aqui" />
+    <button id="guess-button">Adivinhar</button>
+    <p id="result"></p>
+
+    <script>
+      // Lista de cores
+      var colors = ["red", "blue", "green", "yellow", "orange", "purple"];
+
+      // Seleciona uma cor aleatória
+      var randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById("color").textContent = randomColor;
+
+      // Botão de adivinhar
+      document
+        .getElementById("guess-button")
+        .addEventListener("click", function () {
+          var guess = document
+            .getElementById("guess-input")
+            .value.toLowerCase();
+          var color = document.getElementById("color").textContent;
+
+          if (guess === color) {
+            document.getElementById("result").textContent =
+              "Parabéns! Você acertou!";
+          } else {
+            document.getElementById("result").textContent =
+              "Tente novamente. A cor correta era: " + color;
+          }
+        });
+    </script>
+  </body>
+</html>
